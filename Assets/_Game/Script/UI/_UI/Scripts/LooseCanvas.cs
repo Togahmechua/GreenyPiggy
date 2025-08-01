@@ -20,25 +20,26 @@ public class LooseCanvas : UICanvas
     {
         retryBtn.onClick.AddListener(() =>
         {
-            //AudioManager.Ins.PlaySFX(AudioManager.Ins.click);
+            AudioManager.Ins.PlaySFX(AudioManager.Ins.click);
 
             UIManager.Ins.TransitionUI<ChangeUICanvas, LooseCanvas>(0.6f,
                () =>
                {
+                   LevelManager.Ins.DespawnLevel();
                    UIManager.Ins.OpenUI<MainCanvas>();
-                   //LevelManager.Ins.LoadMapByID(LevelManager.Ins.curMapID);
+                   LevelManager.Ins.SpawnLevel();
                });
         });
 
         menuBtn.onClick.AddListener(() =>
         {
-            //AudioManager.Ins.PlaySFX(AudioManager.Ins.click);
+            AudioManager.Ins.PlaySFX(AudioManager.Ins.click);
 
             UIManager.Ins.TransitionUI<ChangeUICanvas, LooseCanvas>(0.6f,
                () =>
                {
-                   //LevelManager.Ins.DespawnMap();
-                   UIManager.Ins.OpenUI<MainCanvas>();
+                   LevelManager.Ins.DespawnLevel();
+                   UIManager.Ins.OpenUI<StartCanvas>();
                });
         });
     }

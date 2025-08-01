@@ -7,6 +7,7 @@ using UnityEngine;
 
 public class LevelManager : Singleton<LevelManager>
 {
+    public Transform startPos;
     public GameObject level;
     [HideInInspector] public Level curLevel;
 
@@ -20,7 +21,8 @@ public class LevelManager : Singleton<LevelManager>
     {
         if (curLevel != null)
         {
-            //SimplePool.CollectAll();
+            curLevel.Loose();
+            SimplePool.CollectAll();
             Destroy(curLevel.gameObject);
         }
     }
